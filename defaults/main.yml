@@ -1,0 +1,3 @@
+---
+deluge_repo: git://deluge-torrent.org/deluge.git
+deluge_version_tag: deluge-2.0.3
