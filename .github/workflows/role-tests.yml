@@ -43,8 +43,6 @@ jobs:
       max-parallel: 4
       matrix:
         molecule_distro:
-          - ubuntu2004
-          - ubuntu1804
           - debian10
         molecule_playbook:
           - converge.yml
@@ -62,6 +60,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install molecule docker molecule-docker
+          python -V
       - name: Test with molecule
         run: |
           molecule test
