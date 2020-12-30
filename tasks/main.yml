@@ -3,4 +3,3 @@
   assert:
     that:
       - "ansible_os_family in supported_ansible_os_families"
-
