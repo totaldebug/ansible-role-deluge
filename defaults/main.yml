@@ -1,3 +1,6 @@
 ---
-deluge_repo: git://deluge-torrent.org/deluge.git
-deluge_version_tag: deluge-2.0.3
+deluge_user: deluge
+deluge_group: deluge
+enable_logging: true
+deluged_port: 58846
+deluge_web_port: 8112
