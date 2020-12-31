@@ -4,8 +4,8 @@
     that:
       - "ansible_os_family in supported_ansible_os_families"
 
-- name: Start Setup
-  include: setup/main.yml
+- name: Start Install
+  include: install/main.yml
 
 - name: Start Configure
   include: configure.yml
