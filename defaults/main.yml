@@ -1,8 +1,12 @@
 ---
 deluge_service_user: deluge
 deluge_service_group: deluge
-enable_logging: true
 deluged_port: 58846
 deluge_web_port: 8112
-deluge_log_dir: '/var/log/deluge'
 deluge_home: ''
+deluge_config_dir: '/var/lib/deluged/config'
+deluge_download_location: '/home'
+
+enable_logging: true
+deluge_log_dir: '/var/log/deluge'
+deluge_log_level: warning

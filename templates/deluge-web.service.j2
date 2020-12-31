@@ -11,7 +11,7 @@ Group={{ deluge_group }}
 UMask=027
 
 {% if enable_logging == true %}
-ExecStart=/usr/bin/deluge-web -d -l /var/log/deluge/web.log -L warning
+ExecStart=/usr/bin/deluge-web -d -l /var/log/deluge/web.log -L {{ deluge_log_level }}
 {% else %}
 ExecStart=/usr/bin/deluge-web -d
 {% endif %}
