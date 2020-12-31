@@ -5,13 +5,13 @@
 
 - name: create deluge group
   group:
-    name: "{{ deluge_group }}"
+    name: "{{ deluge_service_group }}"
     state: present
 
 - name: Create deluge user
   user:
-    name: "{{ deluge_user }}"
-    group: "{{ deluge_group }}"
+    name: "{{ deluge_service_user }}"
+    group: "{{ deluge_service_group }}"
     comment: "Deluge Service"
     create_home: true
     home: "{{ deluge_home }}"

@@ -5,8 +5,8 @@ After=network-online.target
 
 [Service]
 Type=simple
-User={{ deluge_user }}
-Group={{ deluge_group }}
+User={{ deluge_service_user }}
+Group={{ deluge_service_group }}
 UMask=007
 
 {% if enable_logging == true %}
