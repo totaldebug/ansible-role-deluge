@@ -16,24 +16,13 @@ ansible-galaxy install totaldebug.deluge
 
 The following variable defaults are defined in `defaults/main.yml`.
 
-- `deluge_repo` URL to the Deluge Git Repo
-  - Defaults: `git://deluge-torrent.org/deluge.git`
-- `deluge_version` Version of deluge to install (2.0 upwards)
-  - Defaults: `2.0.3`
-- `deluge_config_dir` Directory for deluge config
-- `deluge_users` Creates a list of Deluge users for Auth
-- `deluge_web_port` Port on which Deluge's Web UI is listening.
-- `deluge_web_log_level` Log level for the UI. See available options with deluge-web --help.
-- `deluge_web_args` Arguments passed to the deluge-web binary that's running as a service. See available options with deluge-web --help.
-- `deluge_web_password` Password to be used for the Web UI.
-- `deluge_web_password_salt` Password salt used when generating the Web UI password.
-- `deluge_allow_remote`
-- `deluge_autoadd_location`
-- `deluge_download_location`
-- `deluge_move_completed_path`
-- `deluge_prioritize_first_last_pieces`
-- `deluge_queue_new_to_top`
-- `deluge_torrentfiles_location`
+- `deluge_service_user`: deluge
+- `deluge_service_group`: deluge
+- `enable_logging`: true
+- `deluged_port`: 58846
+- `deluge_web_port`: 8112
+- `deluge_log_dir`: '/var/log/deluge'
+- `deluge_home`: ''
 
 # Contributing
 

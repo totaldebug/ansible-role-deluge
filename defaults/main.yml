@@ -1,6 +1,6 @@
 ---
-deluge_user: deluge
-deluge_group: deluge
+deluge_service_user: deluge
+deluge_service_group: deluge
 enable_logging: true
 deluged_port: 58846
 deluge_web_port: 8112
