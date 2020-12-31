@@ -2,7 +2,7 @@
 
 - name: Add Deluge PPA
   apt_repository:
-    repo: ppa:deluge-team/stable
+    repo: deb http://ppa.launchpad.net/deluge-team/ppa/ubuntu trusty main
     state: present
 
 - name: Install Deluge Daemon
