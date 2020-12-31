@@ -1,0 +1,67 @@
+---
+
+- name: include OS-specific variables
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution }}.yml"
+    - "{{ ansible_os_family }}.yml"
+
+- name: include OS-specific tasks
+  include: "{{ ansible_os_family }}.yml"
+
+- name: create deluge group
+  group:
+    name: "{{ deluge_group }}"
+    state: present
+
+- name: Create deluge user
+  user:
+    name: "{{ deluge_user }}"
+    group: "{{ deluge_group }}"
+    comment: "Deluge Service"
+    create_home: true
+    home: "{{ deluge_home }}"
+    system: true
+
+- name: Check for Log dir
+  stat:
+    path: "{{ deluge_log_dir | dirname }}"
+  register: _deluge_log_dir
+  tags:
+    - deluge
+
+- name: Create logging directory
+  file:
+    path: "{{ deluge_log_dir }}"
+    state: directory
+    mode: '0750'
+    owner: "{{ deluge_user }}"
+    group: "{{ deluge_group }}"
+  when:
+      - _deluge_log_dir is defined
+      - not _deluge_log_dir.stat.exists
+  tags:
+    - deluge
+
+- name: Check for Download dir
+  stat:
+    path: "{{ deluge_download_location | dirname }}"
+  register: _deluge_download_location
+  tags:
+    - deluge
+
+- name: Deluge download directory should be created
+  file:
+    path: "{{ deluge_download_location }}"
+    owner: "{{ deluge_user }}"
+    group: "{{ deluge_group }}"
+    mode: '0755'
+    recurse: True
+    state: directory
+  when:
+    - _deluge_download_location is defined
+    - not _deluge_download_location.stat.exists
+  tags:
+    - deluge
+
+- include: systemd.yml
