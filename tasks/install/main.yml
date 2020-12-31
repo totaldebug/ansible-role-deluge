@@ -38,8 +38,8 @@
     owner: "{{ deluge_user }}"
     group: "{{ deluge_group }}"
   when:
-      - _deluge_log_dir is defined
-      - not _deluge_log_dir.stat.exists
+    - _deluge_log_dir is defined
+    - not _deluge_log_dir.stat.exists
   tags:
     - deluge
 
@@ -56,7 +56,7 @@
     owner: "{{ deluge_user }}"
     group: "{{ deluge_group }}"
     mode: '0755'
-    recurse: True
+    recurse: true
     state: directory
   when:
     - _deluge_download_location is defined
