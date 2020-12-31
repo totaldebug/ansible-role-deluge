@@ -1,9 +1,15 @@
 ---
 
+- name: Add GPG KEy
+  apt_key:
+    url: http://ppa.launchpad.net/deluge-team/ppa/ubuntu/dists/trusty/Release.gpg
+    state: present
+
 - name: Add Deluge PPA
   apt_repository:
     repo: deb http://ppa.launchpad.net/deluge-team/ppa/ubuntu trusty main
     state: present
+    update_cache: true
 
 - name: Install Deluge Daemon
   apt:
