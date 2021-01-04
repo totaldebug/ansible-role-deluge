@@ -7,6 +7,7 @@
   group:
     name: "{{ deluge_service_group }}"
     state: present
+  become: true
 
 - name: Create deluge user
   user:
@@ -16,6 +17,7 @@
     create_home: true
     home: "{{ deluge_home }}"
     system: true
+  become: true
 
 - name: Check for Log dir
   stat:
@@ -36,6 +38,7 @@
     - not _deluge_log_dir.stat.exists
   tags:
     - deluge
+  become: true
 
 - name: Check for Download dir
   stat:
@@ -55,6 +58,7 @@
   when:
     - _deluge_download_location is defined
     - not _deluge_download_location.stat.exists
+  become: true
   tags:
     - deluge
 

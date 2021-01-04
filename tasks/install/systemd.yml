@@ -10,6 +10,7 @@
   with_items:
     - deluged.service
     - deluge-web.service
+  become: true
 
 - name: enable and start Deluge services
   systemd:
@@ -19,4 +20,5 @@
   with_items:
     - deluged
     - deluge-web
+  become: true
   changed_when: false
