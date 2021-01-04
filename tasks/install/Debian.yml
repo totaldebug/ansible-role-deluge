@@ -6,3 +6,4 @@
     update_cache: true
     state: present
     cache_valid_time: 3600
+  become: true
