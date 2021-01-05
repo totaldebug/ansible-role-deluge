@@ -8,7 +8,7 @@
     name: "{{ deluge_service_group }}"
     state: present
   become: true
-  become_method: sudo
+  become_user: root
 
 - name: Create deluge user
   user:
@@ -19,7 +19,7 @@
     home: "{{ deluge_home }}"
     system: true
   become: true
-  become_method: sudo
+  become_user: root
 
 - name: Check for Log dir
   stat:
