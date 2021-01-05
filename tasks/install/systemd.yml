@@ -24,7 +24,7 @@
 - name: Copy user service config
   template:
     src: "user.conf.j2"
-    dest: "{{ deluge_user_service_dir }}/user.conf"
+    dest: "{{ deluge_user_service_dir }}user.conf"
     owner: root
     group: root
     mode: 0755
@@ -54,7 +54,7 @@
 - name: Copy user service config
   template:
     src: "user.conf.j2"
-    dest: "{{ deluge_web_user_service_dir }}/user.conf"
+    dest: "{{ deluge_web_user_service_dir }}user.conf"
     owner: root
     group: root
     mode: 0755
