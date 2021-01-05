@@ -12,8 +12,8 @@
     path: "{{ deluge_user_service_dir }}"
     state: directory
     mode: '0750'
-    owner: "{{ deluge_user }}"
-    group: "{{ deluge_group }}"
+    owner: root
+    group: root
   when:
     - _deluge_user_service_dir is defined
     - not _deluge_user_service_dir.stat.exists
@@ -42,8 +42,8 @@
     path: "{{ deluge_web_user_service_dir }}"
     state: directory
     mode: '0750'
-    owner: "{{ deluge_user }}"
-    group: "{{ deluge_group }}"
+    owner: root
+    group: root
   when:
     - _deluge_web_user_service_dir is defined
     - not _deluge_web_user_service_dir.stat.exists
