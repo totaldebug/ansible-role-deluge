@@ -62,4 +62,5 @@
   tags:
     - deluge
 
-- include: systemd.yml
+- name: Include systemd configs
+  include: systemd.yml
