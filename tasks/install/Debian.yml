@@ -7,9 +7,3 @@
     state: present
     cache_valid_time: 3600
   become: true
-
-- name: Enable deluged
-  lineinfile:
-    path: /etc/default/deluged
-    regexp: '^ENABLE_DELUGED='
-    line: ENABLE_DELUGED=1

@@ -1,5 +1,77 @@
 ---
 
+- name: Check for deluged user service dir
+  stat:
+    path: "{{ deluge_user_service_dir | dirname }}"
+  register: _deluge_user_service_dir
+  tags:
+    - deluge
+
+- name: Create deluged user service dir
+  file:
+    path: "{{ deluge_user_service_dir }}"
+    state: directory
+    mode: '0750'
+    owner: "{{ deluge_user }}"
+    group: "{{ deluge_group }}"
+  when:
+    - _deluge_user_service_dir is defined
+    - not _deluge_user_service_dir.stat.exists
+  tags:
+    - deluge
+  become: true
+
+- name: Copy user service config
+  template:
+    src: "user.conf.j2"
+    dest: "{{ deluge_user_service_dir }}/user.conf"
+    owner: root
+    group: root
+    mode: 0755
+  become: true
+
+- name: Check for deluge-web user service dir
+  stat:
+    path: "{{ deluge_web_user_service_dir | dirname }}"
+  register: _deluge_web_user_service_dir
+  tags:
+    - deluge
+
+- name: Create deluge-web user service dir
+  file:
+    path: "{{ deluge_web_user_service_dir }}"
+    state: directory
+    mode: '0750'
+    owner: "{{ deluge_user }}"
+    group: "{{ deluge_group }}"
+  when:
+    - _deluge_web_user_service_dir is defined
+    - not _deluge_web_user_service_dir.stat.exists
+  tags:
+    - deluge
+  become: true
+
+- name: Copy user service config
+  template:
+    src: "user.conf.j2"
+    dest: "{{ deluge_web_user_service_dir }}/user.conf"
+    owner: root
+    group: root
+    mode: 0755
+  become: true
+
+- name: Install services
+  template:
+    src: "{{ item }}.j2"
+    dest: "/etc/systemd/system/{{ item }}"
+    owner: root
+    group: root
+    mode: 0755
+  with_items:
+    - deluged.service
+    - deluge-web.service
+  become: true
+
 - name: enable and start Deluge services
   systemd:
     name: "{{ item }}"

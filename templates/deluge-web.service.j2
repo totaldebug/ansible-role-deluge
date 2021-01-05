@@ -6,12 +6,10 @@ Wants=deluged.service
 
 [Service]
 Type=simple
-User={{ deluge_service_user }}
-Group={{ deluge_service_group }}
 UMask=027
 
 {% if enable_logging == true %}
-ExecStart=/usr/bin/deluge-web -d -l /var/log/deluge/web.log -L {{ deluge_log_level }}
+ExecStart=/usr/bin/deluge-web -d -l /var/log/deluge/web.log -L {{ deluge_log_level }} {% if log_rotation == true %}--logrotate{% endif %}
 {% else %}
 ExecStart=/usr/bin/deluge-web -d
 {% endif %}

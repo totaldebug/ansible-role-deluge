@@ -5,12 +5,10 @@ After=network-online.target
 
 [Service]
 Type=simple
-User={{ deluge_service_user }}
-Group={{ deluge_service_group }}
 UMask=007
 
 {% if enable_logging == true %}
-ExecStart=/usr/bin/deluged -d -l /var/log/deluge/daemon.log -L {{ deluge_log_level }}
+ExecStart=/usr/bin/deluged -d -l /var/log/deluge/daemon.log -L {{ deluge_log_level }} {% if log_rotation == true %}--logrotate{% endif %}
 {% else %}
 ExecStart=/usr/bin/deluged -d
 {% endif %}
