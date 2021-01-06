@@ -6,8 +6,9 @@
     dest: "{{ deluge_config_dir }}/core.conf"
     owner: "{{ deluge_service_user }}"
     group: "{{ deluge_service_group }}"
-    mode: '0640'
-  check_mode: True
+    mode: 0640
+  check_mode: true
+  become: true
   register: _deluge_core_conf
   tags:
     - deluge_config
@@ -39,8 +40,9 @@
     dest: "{{ deluge_config_dir }}/web.conf"
     owner: "{{ deluge_service_user }}"
     group: "{{ deluge_service_group }}"
-    mode: '0640'
-  check_mode: True
+    mode: 0640
+  check_mode: true
+  become: true
   register: _deluge_web_conf
   tags:
     - deluge_config
