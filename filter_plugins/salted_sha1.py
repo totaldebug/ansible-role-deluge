@@ -10,11 +10,11 @@ def salted_sha1(raw_password, salt):
         """
         return hashlib.sha1(salt + raw_password).hexdigest()
 
-def random_salt():
+def random_salt(salt_length):
     """
     returns a random hex token to use as a salt
     """
-    return secrets.token_hex(16)
+    return secrets.token_hex(salt_length)
 
 class FilterModule(object):
     ''' A filter to salt sha1-encrypted passwords. '''

@@ -12,7 +12,7 @@
     "language": "",
     "pkey": "ssl/daemon.pkey",
     "port": {{ deluge_web_port }},
-    "pwd_salt": "{{ random_salt() }}",
+    "pwd_salt": "{{ deluge_web_salt }}",
     "pwd_sha1": "{{ deluge_web_password | salted_sha1(deluge_web_password_salt) }}",
     "session_timeout": 3600,
     "sessions": {},
