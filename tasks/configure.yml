@@ -17,7 +17,7 @@
   service:
     name: 'deluged'
     state: stopped
-  when: _deluge_core_conf|changed
+  when: _deluge_core_conf is changed
   tags:
     - deluge_config
 
@@ -30,7 +30,7 @@
     mode: 0640
     backup: true
   become: true
-  notify: restart deluge-web
+  notify: restart deluge
   tags:
     - deluge_config
 
@@ -51,7 +51,7 @@
   service:
     name: 'deluge-web'
     state: stopped
-  when: _deluge_web_conf|changed
+  when: _deluge_web_conf is changed
   tags:
     - deluge_config
 
