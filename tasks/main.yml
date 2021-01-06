@@ -9,4 +9,3 @@
 
 - name: Start Configure
   include: configure.yml
-vi 
