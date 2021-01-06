@@ -10,6 +10,7 @@ deluge_move_completed_path: '{{ deluge_download_location }}'
 deluge_torrentfiles_location: '{{ deluge_download_location }}'
 deluge_autoadd_location: '{{ deluge_download_location }}'
 deluge_user_service_dir: '/etc/systemd/system/deluged.service.d/'
+deluge_core_conf_template: 'core.conf.j2'
 
 # Deluge web
 deluge_web: true
