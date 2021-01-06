@@ -28,6 +28,7 @@
     group: "{{ deluge_service_user }}"
     mode: 0640
     backup: true
+  become: true
   notify: restart deluge-web
   tags:
     - deluge_config
@@ -60,6 +61,7 @@
     group: "{{ deluge_service_user }}"
     mode: 0640
     backup: true
+  become: true
   notify: restart deluge-web
   tags:
     - deluge_config
