@@ -90,7 +90,6 @@
 - name: enable and start Deluged service
   systemd:
     name: deluged
-    state: started
     enabled: true
   become: true
   changed_when: false
@@ -98,7 +97,6 @@
 - name: enable and start Deluge services
   systemd:
     name: deluge-web
-    state: started
     enabled: true
   become: true
   when: deluge_web
