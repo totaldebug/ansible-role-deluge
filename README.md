@@ -23,6 +23,9 @@ The following variable defaults are defined in `defaults/main.yml`.
 - `deluged_port` default: `58846` - Deluge port
 - `deluge_home` default: `/ver/log/deluge/` - sets the default home for the deluge service account, config will be stored here
 - `deluge_download_location` default: `/home`
+- `deluge_move_completed_path` default: `'{{ deluge_download_location }}'`
+- `deluge_torrentfiles_location` default: `'{{ deluge_download_location }}'`
+- `deluge_autoadd_location` default: `'{{ deluge_download_location }}'`
 - `deluge_user_service_dir` default: `/etc/systemd/system/deluged.service.d/`
 - `deluge_core_conf_template` default: `core.conf.j2`
 
