@@ -15,7 +15,7 @@
 
 - name: deluged config file needs updating. deluge should be stopped beforehand
   service:
-    name: 'deluged'
+    name: deluged
     state: stopped
   become: true
   when: _deluge_core_conf is changed
@@ -31,7 +31,7 @@
     mode: 0640
     backup: true
   become: true
-  notify: restart deluge
+  notify: restart deluged
   tags:
     - deluge_config
 
@@ -50,7 +50,7 @@
 
 - name: deluge-web config file needs updating. deluge-web should be stopped beforehand
   service:
-    name: 'deluge-web'
+    name: deluge-web
     state: stopped
   become: true
   when: _deluge_web_conf is changed
