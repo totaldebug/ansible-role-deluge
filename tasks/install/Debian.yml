@@ -2,8 +2,22 @@
 
 - name: Install Deluge Daemon
   apt:
-    name: ['deluged', 'deluge-web', 'deluge-console']
+    name: ['deluged', 'deluge-console']
     update_cache: true
     state: present
     cache_valid_time: 3600
   become: true
+  tags:
+    -deluge
+
+- name: Install Deluge Web
+  apt:
+    name: deluge-web
+    update_cache: true
+    state: present
+    cache_valid_time: 3600
+  become: true
+  when: deluge_web
+  tags:
+    - deluge
+    - deluge_web

@@ -34,6 +34,7 @@
   stat:
     path: "{{ deluge_web_user_service_dir | dirname }}"
   register: _deluge_web_user_service_dir
+  when: deluge_web
   tags:
     - deluge
 
@@ -47,6 +48,7 @@
   when:
     - _deluge_web_user_service_dir is defined
     - not _deluge_web_user_service_dir.stat.exists
+    - deluge_web
   tags:
     - deluge
   become: true
@@ -59,26 +61,45 @@
     group: root
     mode: 0755
   become: true
+  when: deluge_web
+  tags:
+    - deluge
 
-- name: Install services
+- name: Install deluged services
   template:
-    src: "{{ item }}.j2"
-    dest: "/etc/systemd/system/{{ item }}"
+    src: "deluged.service.j2"
+    dest: "/etc/systemd/system/deluged.service"
     owner: root
     group: root
     mode: 0755
-  with_items:
-    - deluged.service
-    - deluge-web.service
   become: true
+  tags:
+    - deluge
+
+- name: Install deluge-web services
+  template:
+    src: "deluge-web.service.j2"
+    dest: "/etc/systemd/system/deluge-web.service"
+    owner: root
+    group: root
+    mode: 0755
+  become: true
+  tags:
+    - deluge
+
+- name: enable and start Deluged service
+  systemd:
+    name: deluged
+    state: started
+    enabled: true
+  become: true
+  changed_when: false
 
 - name: enable and start Deluge services
   systemd:
-    name: "{{ item }}"
+    name: deluge-web
     state: started
     enabled: true
-  with_items:
-    - deluged
-    - deluge-web
   become: true
+  when: deluge_web
   changed_when: false

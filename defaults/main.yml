@@ -1,14 +1,23 @@
 ---
+# Deluge
 deluge_service_user: deluge
 deluge_service_group: deluge
 deluged_port: 58846
-deluge_web_port: 8112
 deluge_home: '/var/lib/deluge/'
-deluge_config_dir: '/var/lib/deluged/config/'
+deluge_config_dir: '{{ deluge_home }}.config/deluge'
 deluge_download_location: '/home'
+deluge_move_completed_path: '{{ deluge_download_location }}'
+deluge_torrentfiles_location: '{{ deluge_download_location }}'
+deluge_autoadd_location: '{{ deluge_download_location }}'
 deluge_user_service_dir: '/etc/systemd/system/deluged.service.d/'
-deluge_web_user_service_dir: '/etc/systemd/system/deluge-web.service.d/'
 
+# Deluge web
+deluge_web: true
+deluge_web_port: 8112
+deluge_web_user_service_dir: '/etc/systemd/system/deluge-web.service.d/'
+deluge_web_conf_template: 'web.conf.j2'
+
+# Logging
 enable_logging: false
 log_rotation: false
 deluge_log_dir: '/var/log/deluge/'

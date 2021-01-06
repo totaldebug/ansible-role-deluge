@@ -9,9 +9,9 @@ Type=simple
 UMask=027
 
 {% if enable_logging == true %}
-ExecStart=/usr/bin/deluge-web -d -l {{ deluge_log_dir }}web.log -L {{ deluge_log_level }} {% if log_rotation == true %}--logrotate{% endif %}
+ExecStart=/usr/bin/deluge-web -d -c {{ deluge_config_dir }} -l {{ deluge_log_dir }}web.log -L {{ deluge_log_level }} {% if log_rotation == true %}--logrotate{% endif %}
 {% else %}
-ExecStart=/usr/bin/deluge-web -d
+ExecStart=/usr/bin/deluge-web -d -c {{ deluge_config_dir }}
 {% endif %}
 
 Restart=on-failure
