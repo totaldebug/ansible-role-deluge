@@ -3,14 +3,14 @@
 - name: Copy deluge configuration file
   template:
     src: "{{ deluge_core_conf_template }}"
-    dest: "{{ deluge_home }}/.config/deluge/core.conf"
+    dest: "{{ deluge_home }}.config/deluge/core.conf"
     owner: "{{ deluge_service_user }}"
     group: "{{ deluge_service_user }}"
 
 - name: Copy deluge-web configuration file
   template:
     src: "{{ deluge_web_conf_template }}"
-    dest: "{{ deluge_home }}/.config/deluge/web.conf"
+    dest: "{{ deluge_home }}.config/deluge/web.conf"
     owner: "{{ deluge_service_user }}"
     group: "{{ deluge_service_user }}"
   when: deluge_web
