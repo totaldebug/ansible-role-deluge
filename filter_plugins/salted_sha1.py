@@ -15,7 +15,7 @@ class FilterModule(object):
         returns a random hex token to use as a salt
         """
         salt = secrets.token_hex(salt_length)
-        return salt.encode('utf-8')
+        return salt
 
     def salted_sha1(self, raw_password, salt):
             """
