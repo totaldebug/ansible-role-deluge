@@ -20,6 +20,6 @@ class FilterModule(object):
     ''' A filter to salt sha1-encrypted passwords. '''
     def filters(self):
         return {
-            'salted_sha1': salted_sha1,
-            'random_salt': random_salt
+            'random_salt': random_salt,
+            'salted_sha1': salted_sha1
         }
