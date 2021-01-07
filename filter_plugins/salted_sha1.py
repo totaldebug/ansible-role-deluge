@@ -14,7 +14,8 @@ def random_salt(salt_length):
     """
     returns a random hex token to use as a salt
     """
-    return secrets.token_hex(salt_length)
+    salt = secrets.token_hex(salt_length)
+    return salt.encode('utf-8')
 
 class FilterModule(object):
     ''' A filter to salt sha1-encrypted passwords. '''
