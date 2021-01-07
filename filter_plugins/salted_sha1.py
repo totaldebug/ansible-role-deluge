@@ -22,4 +22,7 @@ class FilterModule(object):
             Returns a string of the hexdigest of the given plaintext password and salt
             using the sha1 algorithm.
             """
+            salt = str(salt).encode("utf-8")
+            raw_password = str(raw_password).encode("utf-8")
+
             return hashlib.sha1(salt + raw_password).hexdigest()
