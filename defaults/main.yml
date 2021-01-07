@@ -17,7 +17,7 @@ deluge_web: true
 deluge_web_port: 8112
 deluge_web_user_service_dir: '/etc/systemd/system/deluge-web.service.d/'
 deluge_web_conf_template: 'web.conf.j2'
-deluge_web_password: '{{ 16 | random_salt  }}'
+deluge_web_password_salt: '{{ 16 | random_salt  }}'
 
 # Logging
 enable_logging: false
