@@ -11,8 +11,6 @@
 
 - name: start deluged and web
   systemd:
-    name: "{{ item }}"
+    name: deliged
     state: started
-  with_items:
-    - deluged
-    - deluge-web
+  notify: restart deluge-web
