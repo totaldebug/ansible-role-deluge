@@ -9,7 +9,6 @@
     name: deluge-web
     state: restarted
 
-
 - name: start deluged and web
   service:
     name: ['deluged','deluge-web']
