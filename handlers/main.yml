@@ -1,15 +1,15 @@
 ---
 - name: restart deluged
-  service:
+  systemd:
     name: deluged
     state: restarted
 
 - name: restart deluge-web
-  service:
+  systemd:
     name: deluge-web
     state: restarted
 
 - name: start deluged and web
-  service:
+  systemd:
     name: ['deluged','deluge-web']
     state: started
