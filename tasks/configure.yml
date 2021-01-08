@@ -72,5 +72,9 @@
 
 - name: Pause for 30 seconds before starting web
   pause:
-    seconds: 30
-  notify: restart deluge-web
+    seconds: 10
+
+- name: restart deluge-web service
+  systemd:
+    name: deluge-web
+    state: restarted
