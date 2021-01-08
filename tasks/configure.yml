@@ -1,5 +1,28 @@
 ---
 
+- name: Check for config dir
+  stat:
+    path: "{{ deluge_config_dir | dirname }}"
+  register: _deluge_config_dir
+  tags:
+    - deluge
+    - deluge_config
+
+- name: Create config directory
+  file:
+    path: "{{ deluge_config_dir }}"
+    state: directory
+    mode: '0750'
+    owner: "{{ deluge_service_user }}"
+    group: "{{ deluge_service_group }}"
+  when:
+    - _deluge_config_dir is defined
+    - not _deluge_config_dir.stat.exists
+  tags:
+    - deluge
+    - deluge_config
+  become: true
+
 - name: Checking if we should template the deluge config file
   template:
     src: "{{ deluge_core_conf_template }}"
@@ -25,7 +48,7 @@
 - name: Copy deluge configuration file
   template:
     src: "{{ deluge_core_conf_template }}"
-    dest: "{{ deluge_home }}.config/deluge/core.conf"
+    dest: "{{ deluge_config_dir }}/core.conf"
     owner: "{{ deluge_service_user }}"
     group: "{{ deluge_service_group }}"
     mode: 0640
@@ -60,13 +83,13 @@
 - name: Copy deluge-web configuration file
   template:
     src: "{{ deluge_web_conf_template }}"
-    dest: "{{ deluge_home }}.config/deluge/web.conf"
+    dest: "{{ deluge_config_dir }}/web.conf"
     owner: "{{ deluge_service_user }}"
     group: "{{ deluge_service_group }}"
     mode: 0640
     backup: true
   become: true
   notify: restart deluge-web
+  when: deluge_web
   tags:
     - deluge_config
-  when: deluge_web
