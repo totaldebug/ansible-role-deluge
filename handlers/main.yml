@@ -8,9 +8,3 @@
   systemd:
     name: deluge-web
     state: restarted
-
-- name: start deluged and web
-  systemd:
-    name: deluged
-    state: started
-  notify: restart deluge-web
