@@ -11,6 +11,6 @@
 
 - name: start deluged and web
   systemd:
-    name: deliged
+    name: deluged
     state: started
   notify: restart deluge-web
