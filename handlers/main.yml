@@ -11,5 +11,8 @@
 
 - name: start deluged and web
   systemd:
-    name: ['deluged','deluge-web']
+    name: "{{ items }}"
     state: started
+  with_items:
+    - deluged
+    - deluge-web
