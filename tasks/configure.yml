@@ -66,15 +66,7 @@
     mode: 0640
     backup: true
   become: true
+  notify: restart deluge-web
   tags:
     - deluge_config
   when: deluge_web
-
-- name: Pause for 30 seconds before starting web
-  pause:
-    seconds: 10
-
-- name: restart deluge-web service
-  systemd:
-    name: deluge-web
-    state: restarted

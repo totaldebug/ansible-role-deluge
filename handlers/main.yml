@@ -3,8 +3,10 @@
   systemd:
     name: deluged
     state: restarted
+  become: true
 
 - name: restart deluge-web
   systemd:
     name: deluge-web
     state: restarted
+  become: true
