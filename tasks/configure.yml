@@ -68,6 +68,7 @@
   check_mode: true
   become: true
   register: _deluge_web_conf
+  changed_when: false
   tags:
     - deluge_config
 
@@ -77,6 +78,7 @@
     state: stopped
   become: true
   when: _deluge_web_conf is changed
+  changed_when: false
   tags:
     - deluge_config
 
@@ -91,5 +93,6 @@
   become: true
   notify: restart deluge-web
   when: deluge_web
+  changed_when: false
   tags:
     - deluge_config

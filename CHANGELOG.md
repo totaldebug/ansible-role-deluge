@@ -1,5 +1,3 @@
 # Change Log
 
-# 0.0.1
-
-* In Development
+For a list of changes please look in the [releases](https://github.com/totaldebug/ansible-role-deluge/releases) section
