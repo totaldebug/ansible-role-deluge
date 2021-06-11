@@ -8,7 +8,7 @@ Type=simple
 UMask=007
 
 {% if enable_logging == true %}
-ExecStart=/usr/bin/deluged -d -c {{ deluge_config_dir }} -l {{ deluge_log_dir }}daemon.log -L {{ deluge_log_level }} {% if log_rotation == true %}--logrotate{% endif %}
+ExecStart=/usr/bin/deluged -d -c {{ deluge_config_dir }} -l {{ deluge_log_dir }}daemon.log -L {{ deluge_log_level }}
 {% else %}
 ExecStart=/usr/bin/deluged -d -c {{ deluge_config_dir }}
 {% endif %}

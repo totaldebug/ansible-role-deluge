@@ -75,7 +75,6 @@ ansible-galaxy install totaldebug.deluge
 | **Input** | **Default** | **Description** |
 | --------- | ----------- | --------------- |
 | `enable_logging` | `false` | Enables logging |
-| `log_rotation` | `false` | Enables log rotation |
 | `deluge_log_dir` | `/var/log/deluge/` | Log location |
 | `deluge_log_level` | `warning` | Level of logging |
 
