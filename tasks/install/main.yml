@@ -14,21 +14,16 @@
   getent:
     database: passwd
     key:
-  tags: ["users", "configuration"]
 
 - name: set fact when user exists
   set_fact:
     user_exists: true
-  when: item.username in ansible_facts.getent_passwd
-  with_items: "{{ users }}"
-  tags: ["users", "configuration"]
+  when: deluge_service_user in ansible_facts.getent_passwd
 
 - name: set fact when user does not exists
   set_fact:
     user_exists: false
-  when: item.username not in ansible_facts.getent_passwd
-  with_items: "{{ users }}"
-  tags: ["users", "configuration"]
+  when: deluge_service_user not in ansible_facts.getent_passwd
 
 - name: Create deluge user
   user:
