@@ -10,6 +10,26 @@
   become: true
   become_user: root
 
+- name: Get all users from device
+  getent:
+    database: passwd
+    key:
+  tags: ["users", "configuration"]
+
+- name: set fact when user exists
+  set_fact:
+    user_exists: true
+  when: item.username in ansible_facts.getent_passwd
+  with_items: "{{ users }}"
+  tags: ["users", "configuration"]
+
+- name: set fact when user does not exists
+  set_fact:
+    user_exists: false
+  when: item.username not in ansible_facts.getent_passwd
+  with_items: "{{ users }}"
+  tags: ["users", "configuration"]
+
 - name: Create deluge user
   user:
     name: "{{ deluge_service_user }}"
@@ -18,6 +38,8 @@
     create_home: true
     home: "{{ deluge_home }}"
     system: true
+  when:
+    - not user_exists
   become: true
   become_user: root
 
