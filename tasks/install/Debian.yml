@@ -1,9 +1,21 @@
 ---
 
+- name: Install gnupg
+  ansible.builtin.apt:
+    name: gnupg
+    update_cache: true
+    state: present
+    cacne_valid_time: 100
+  when: ansible_distribution == 'Debian'
+  become: true
+  tags:
+    - deluge
+
 - name: Add ubuntu source
   ansible.builtin.apt_repository:
     repo: deb [trusted=yes] http://ppa.launchpad.net/deluge-team/stable/ubuntu/ xenial main
     state: present
+  when: ansible_distribution == 'Debian'
   become: true
   tags:
     - deluge
@@ -14,6 +26,7 @@
     id: C5E6A5ED249AD24C
     state: present
   become: true
+  when: ansible_distribution == 'Debian'
   tags:
     - deluge
 
