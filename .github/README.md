@@ -60,6 +60,7 @@ ansible-galaxy install totaldebug.deluge
 | `deluge_autoadd_location` | `'{{ deluge_download_location }}'` | Deluge Auto Add folder |
 | `deluge_user_service_dir` | `/etc/systemd/system/deluged.service.d/` | Sets the directory for the user service config |
 | `deluge_core_conf_template` | `core.conf.j2` | allows the use of a custom config file see custom templates below |
+| `deluge_plugins` | | add a list of plugins that you want to be enabled |
 
 #### Deluge Web
 
@@ -111,6 +112,7 @@ What you need to do:
 | Setup Log Rotation         |         ✔️         |
 | Setup Log Level            |         ✔️         |
 | Configure custom ports     |         ✔️         |
+| Enable plugins             |         ✔️         |
 | Ubuntu Support             |         ✔️         |
 | RedHat / CentOS 8 Support  |         ✔️         |
 | Systemd Services           |         ✔️         |
