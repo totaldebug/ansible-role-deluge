@@ -5,7 +5,7 @@
     name: gnupg
     update_cache: true
     state: present
-    cacne_valid_time: 100
+    cache_valid_time: 100
   when: ansible_distribution == 'Debian'
   become: true
   tags:
