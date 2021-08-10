@@ -3,8 +3,8 @@
 deluge_service_user: deluge
 deluge_service_group: deluge
 deluged_port: 58846
-deluge_home: '/var/lib/deluge/'
-deluge_config_dir: '{{ deluge_home }}.config/deluge'
+deluge_home: '/var/lib/deluge'
+deluge_config_dir: '{{ deluge_home }}/.config/deluge'
 deluge_download_location: '/home'
 deluge_move_completed_path: '{{ deluge_download_location }}'
 deluge_torrentfiles_location: '{{ deluge_download_location }}'
