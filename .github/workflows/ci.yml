@@ -35,8 +35,7 @@ jobs:
       - name: Getting your configuration from GitHub
         uses: actions/checkout@v2
       - name: Lint Ansible Role
-        # replace "master" with any valid ref
-        uses: ansible/ansible-lint-action@master
+        uses: ansible-community/ansible-lint-action@main
   check_role:
     runs-on: ubuntu-latest
     needs: [yaml_lint, remark_lint, ansible_lint]
