@@ -4,4 +4,4 @@
   become: true
 
   roles:
-    - role: totaldebug.deluge
+    - role: ansible-role-deluge
