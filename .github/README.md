@@ -48,36 +48,36 @@ ansible-galaxy install totaldebug.deluge
 
 #### Deluge
 
-| **Input** | **Default** | **Description** |
-|:---------:|:-----------:|:---------------:|
-| `deluge_service_user` | `deluge` | Username for the service account |
-| `deluge_service_group` | `deluge` | Group for the service account |
-| `deluged_port` | `58846` | Deluge port |
-| `deluge_home` | `/ver/log/deluge/` | Sets the default home for the deluge service account, config will be stored here |
-| `deluge_download_location` | `/home` | Downloaded file directory |
-| `deluge_move_completed_path` | `'{{ deluge_download_location }}'` | Completed downloads path |
-| `deluge_torrentfiles_location` | `'{{ deluge_download_location }}'` | Deluge torrent file location |
-| `deluge_autoadd_location` | `'{{ deluge_download_location }}'` | Deluge Auto Add folder |
-| `deluge_user_service_dir` | `/etc/systemd/system/deluged.service.d/` | Sets the directory for the user service config |
-| `deluge_core_conf_template` | `core.conf.j2` | allows the use of a custom config file see custom templates below |
-| `deluge_plugins` | | add a list of plugins that you want to be enabled |
+|           **Input**            |               **Default**                |                                 **Description**                                  |
+| :----------------------------: | :--------------------------------------: | :------------------------------------------------------------------------------: |
+|     `deluge_service_user`      |                 `deluge`                 |                         Username for the service account                         |
+|     `deluge_service_group`     |                 `deluge`                 |                          Group for the service account                           |
+|         `deluged_port`         |                 `58846`                  |                                   Deluge port                                    |
+|         `deluge_home`          |            `/ver/log/deluge/`            | Sets the default home for the deluge service account, config will be stored here |
+|   `deluge_download_location`   |            `/home/downloads`             |                            Downloaded file directory                             |
+|  `deluge_move_completed_path`  |    `'{{ deluge_download_location }}'`    |                             Completed downloads path                             |
+| `deluge_torrentfiles_location` |    `'{{ deluge_download_location }}'`    |                           Deluge torrent file location                           |
+|   `deluge_autoadd_location`    |    `'{{ deluge_download_location }}'`    |                              Deluge Auto Add folder                              |
+|   `deluge_user_service_dir`    | `/etc/systemd/system/deluged.service.d/` |                  Sets the directory for the user service config                  |
+|  `deluge_core_conf_template`   |              `core.conf.j2`              |        allows the use of a custom config file see custom templates below         |
+|        `deluge_plugins`        |                                          |                add a list of plugins that you want to be enabled                 |
 
 #### Deluge Web
 
-| **Input** | **Default** | **Description** |
-|:---------:|:-----------:|:---------------:|
-| `deluge_web` | `true` | Installs the deluge-web component |
-| `deluge_web_port` | `8112` | Change the web port for the portal |
-| `deluge_web_user_service_dir` | `/etc/systemd/system/deluge-web.service.d/` | Sets the directory for the user service config |
-| `deluge_web_conf_template` | `web.conf.j2` | allows the use of a custom config file see custom templates below |
+|           **Input**           |                 **Default**                 |                          **Description**                          |
+| :---------------------------: | :-----------------------------------------: | :---------------------------------------------------------------: |
+|         `deluge_web`          |                   `true`                    |                 Installs the deluge-web component                 |
+|       `deluge_web_port`       |                   `8112`                    |                Change the web port for the portal                 |
+| `deluge_web_user_service_dir` | `/etc/systemd/system/deluge-web.service.d/` |          Sets the directory for the user service config           |
+|  `deluge_web_conf_template`   |                `web.conf.j2`                | allows the use of a custom config file see custom templates below |
 
 #### Logging
 
-| **Input** | **Default** | **Description** |
-| --------- | ----------- | --------------- |
-| `enable_logging` | `false` | Enables logging |
-| `deluge_log_dir` | `/var/log/deluge/` | Log location |
-| `deluge_log_level` | `warning` | Level of logging |
+| **Input**          | **Default**        | **Description**  |
+| ------------------ | ------------------ | ---------------- |
+| `enable_logging`   | `false`            | Enables logging  |
+| `deluge_log_dir`   | `/var/log/deluge/` | Log location     |
+| `deluge_log_level` | `warning`          | Level of logging |
 
 ### Custom Template
 
@@ -96,7 +96,6 @@ What you need to do:
 
 ```yaml
 ---
-
 - host: all
   roles:
     - totaldebug/deluge
@@ -104,18 +103,18 @@ What you need to do:
 
 ## Features
 
-|                            |         🔰         |
-| -------------------------- | :----------------: |
-| Install Deluge 2.x         |         ✔️         |
-| Install Deluge Web         |         ✔️         |
-| Custom config templates    |         ✔️         |
-| Setup Log Rotation         |         ✔️         |
-| Setup Log Level            |         ✔️         |
-| Configure custom ports     |         ✔️         |
-| Enable plugins             |         ✔️         |
-| Ubuntu Support             |         ✔️         |
-| RedHat / CentOS 8 Support  |         ✔️         |
-| Systemd Services           |         ✔️         |
+|                           | 🔰  |
+| ------------------------- | :-: |
+| Install Deluge 2.x        | ✔️  |
+| Install Deluge Web        | ✔️  |
+| Custom config templates   | ✔️  |
+| Setup Log Rotation        | ✔️  |
+| Setup Log Level           | ✔️  |
+| Configure custom ports    | ✔️  |
+| Enable plugins            | ✔️  |
+| Ubuntu Support            | ✔️  |
+| RedHat / CentOS 8 Support | ✔️  |
+| Systemd Services          | ✔️  |
 
 ## Contributing
 
@@ -134,8 +133,8 @@ In the context of semantic versioning, consider the role contract to be defined 
 ## Author
 
 | [![TotalDebug](https://totaldebug.uk/assets/images/logo.png)](https://linkedin.com/in/marksie1988) |
-|:--:|
-| **marksie1988 (Steven Marks)** |
+| :------------------------------------------------------------------------------------------------: |
+|                                   **marksie1988 (Steven Marks)**                                   |
 
 ## Support
 
