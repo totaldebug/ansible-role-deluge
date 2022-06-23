@@ -46,7 +46,9 @@ jobs:
         distro:
           #- centos8
           #- centos7
+          - ubuntu2204
           - ubuntu2004
+          - debian11
           - debian10
         playbook:
           - converge.yml
