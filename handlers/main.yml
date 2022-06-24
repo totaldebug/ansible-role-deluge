@@ -1,12 +1,12 @@
 ---
 - name: restart deluged
-  systemd:
+  ansible.builtin.systemd:
     name: deluged
     state: restarted
   become: true
 
 - name: restart deluge-web
-  systemd:
+  ansible.builtin.systemd:
     name: deluge-web
     state: restarted
   become: true

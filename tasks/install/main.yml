@@ -4,29 +4,29 @@
   include: "{{ ansible_os_family }}.yml"
 
 - name: create deluge group
-  group:
+  ansible.builtin.group:
     name: "{{ deluge_service_group }}"
     state: present
   become: true
   become_user: root
 
 - name: Get all users from device
-  getent:
+  ansible.builtin.getent:
     database: passwd
     key:
 
 - name: set fact when user exists
-  set_fact:
+  ansible.builtin.set_fact:
     user_exists: true
   when: deluge_service_user in ansible_facts.getent_passwd
 
 - name: set fact when user does not exists
-  set_fact:
+  ansible.builtin.set_fact:
     user_exists: false
   when: deluge_service_user not in ansible_facts.getent_passwd
 
 - name: Create deluge user
-  user:
+  ansible.builtin.user:
     name: "{{ deluge_service_user }}"
     group: "{{ deluge_service_group }}"
     comment: "Deluge Service"
@@ -39,14 +39,14 @@
   become_user: root
 
 - name: Check for Log dir
-  stat:
+  ansible.builtin.stat:
     path: "{{ deluge_log_dir | dirname }}"
   register: _deluge_log_dir
   tags:
     - deluge
 
 - name: Create logging directory
-  file:
+  ansible.builtin.file:
     path: "{{ deluge_log_dir }}"
     state: directory
     mode: '0750'
@@ -60,14 +60,14 @@
   become: true
 
 - name: Check for Download dir
-  stat:
+  ansible.builtin.stat:
     path: "{{ deluge_download_location | dirname }}"
   register: _deluge_download_location
   tags:
     - deluge
 
 - name: Deluge download directory should be created
-  file:
+  ansible.builtin.file:
     path: "{{ deluge_download_location }}"
     owner: "{{ deluge_service_user }}"
     group: "{{ deluge_service_group }}"
