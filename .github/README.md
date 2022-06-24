@@ -53,11 +53,10 @@ ansible-galaxy install totaldebug.deluge
 |     `deluge_service_user`      |                 `deluge`                 |                         Username for the service account                         |
 |     `deluge_service_group`     |                 `deluge`                 |                          Group for the service account                           |
 |         `deluged_port`         |                 `58846`                  |                                   Deluge port                                    |
-|         `deluge_home`          |            `/ver/log/deluge/`            | Sets the default home for the deluge service account, config will be stored here |
+|         `deluge_home`          |            `/var/lib/deluge`            | Sets the default home for the deluge service account, config will be stored here |
 |   `deluge_download_location`   |      `{{ deluge_home }}/downloads`       |                            Downloaded file directory                             |
 |  `deluge_move_completed_path`  |    `'{{ deluge_download_location }}'`    |                             Completed downloads path                             |
 | `deluge_torrentfiles_location` |    `'{{ deluge_download_location }}'`    |                           Deluge torrent file location                           |
-|   `deluge_autoadd_location`    |    `'{{ deluge_download_location }}'`    |                              Deluge Auto Add folder                              |
 |   `deluge_user_service_dir`    | `/etc/systemd/system/deluged.service.d/` |                  Sets the directory for the user service config                  |
 |  `deluge_core_conf_template`   |              `core.conf.j2`              |        allows the use of a custom config file see custom templates below         |
 |        `deluge_plugins`        |                                          |                add a list of plugins that you want to be enabled                 |
